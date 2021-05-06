@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>TO DO</title>
+</head>
+
+
+<body>
+
+
+    <div id="app" class="container">
+
+        <div class="logo">
+            <img src="assets/img/logo.png" alt="img logo">
+        </div>
+        
+
+        <div class="input">
+            <h4 v-if='alert'>Attenzione: inserire un testo piu lungo.</h4>
+            <input v-model='stringaAggiunta' class="inp-text" @keyup.enter='addTodo' type="text" placeholder="scrivi la tua lista">
+            <button @click='addTodo' class="add">Aggiungi</button>
+        </div>
+
+        <div class="cont-lista">
+            <ul>
+                <li v-for="(todo, index) in todos" :class="todo.checked ? 'checked' :null" :style="(index===todos.length-1) ? 'border:none' : null" @click='todo.checked = !todo.checked'>
+                    {{todo.text}}
+                    <i @click.stop='remove(index)' class="fas fa-times"></i>
+                </li>
+            </ul>
+        </div>
+
+      
+    
+
+
+
+    </div>
+    
+
+
+
+
+
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
